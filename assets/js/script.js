@@ -1,6 +1,6 @@
 'use strict';
 
-var lightmode = false;
+var lightmode = true;
 var cookiesAccepted = false;
 
 // element toggle function
@@ -13,7 +13,7 @@ const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 // sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+//sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
 
 
@@ -173,16 +173,18 @@ $(document).ready(function(){
   {
     themeIcon.setAttribute("name","sunny-outline")
   }
-  themeIcon.addEventListener("click", toggleTheme)
-  ;
+  themeIcon.addEventListener("click", function () {
+    toggleTheme
+  });
 
-  if (getCookie("theme")=="light"){
-    LightModeOrDefault(true);
-    themeIcon.setAttribute("name","moon-outline")
-  }
-  else if (getCookie("theme")=="dark"){
+  if (getCookie("theme")=="dark"){
     LightModeOrDefault(false);
     themeIcon.setAttribute("name","sunny-outline")
+    
+  }
+  else if (getCookie("theme")=="light"){
+    LightModeOrDefault(true);
+    themeIcon.setAttribute("name","moon-outline")
   }
 
 });
@@ -216,19 +218,19 @@ function toggleTheme()
   }
   if(cookiesAccepted)
   {
-    if (themeIcon.getAttribute("name") == "moon-outline")
-    {
-      LightModeOrDefault(false);
-      deleteCookie("theme");
-      setCookie("theme", 'dark', "30");
-      themeIcon.setAttribute("name","sunny-outline")
-    }
-    else if (themeIcon.getAttribute("name") == "sunny-outline")
+    if (themeIcon.getAttribute("name") == "sunny-outline")
     {
       LightModeOrDefault(true);
       deleteCookie("theme");
       setCookie("theme", 'light', "30");
       themeIcon.setAttribute("name","moon-outline")
+    }
+    else if (themeIcon.getAttribute("name") == "moon-outline")
+    {
+      LightModeOrDefault(false);
+      deleteCookie("theme");
+      setCookie("theme", 'dark', "30");
+      themeIcon.setAttribute("name","sunny-outline")
     }
   }
 }
