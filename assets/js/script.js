@@ -6,7 +6,7 @@ var cookiesAccepted = false;
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
-document.getElementById("simple-cookie-consent").style.display = "none";
+// document.getElementById("simple-cookie-consent").style.display = "none";
 
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
@@ -173,9 +173,8 @@ $(document).ready(function(){
   {
     themeIcon.setAttribute("name","sunny-outline")
   }
-  themeIcon.addEventListener("click", function () {
-    toggleTheme
-  });
+  themeIcon.addEventListener("click", toggleTheme)
+  ;
 
   if (getCookie("theme")=="light"){
     LightModeOrDefault(true);
@@ -377,3 +376,13 @@ function LightModeOrDefault(lightmode){
     lightmode=false
   }
 }
+
+// function LightModeOrDefault(isLight) {
+//   if (isLight) {
+//     document.documentElement.className = 'light-theme';
+//     lightmode = true; 
+//   } else {
+//     document.documentElement.className = '';
+//     lightmode = false; 
+//   }
+// }
